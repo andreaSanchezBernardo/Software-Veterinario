@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "FichaMascota";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+    .fichaAnimal{
+        display:flex;
+        justify-content:space-around;
+        padding-top:50px;
+    }
+</style>
+<h2>FICHA DE "NOMBRE MASCOTA"</h2>
+
+<div class="fichaAnimal">
+    <div>
+        <h3>Datos de la Mascota</h3>
+        <form>
+            <div class="form-group">
+                <label for="id">NºFicha</label>
+                <input type="text" class="form-control" id="id" name="id" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreM">Nombre</label>
+                <input type="text" class="form-control" id="nombreM" name="nombreM" required>
+            </div>
+            <div class="form-group">
+                <label for="microchip">Nº Microchip</label>
+                <input type="text" class="form-control" id="microchip" name="microchip">
+            </div>
+            <div class="form-group">
+                <label for="especie">Especie</label>
+                <select id="especie" class="form-control">
+                    <option value="" disabled selected>Seleccione una especie</option>
+                    <option value="perro">Perro</option>
+                    <option value="gato">Gato</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="raza">Raza</label>
+                <select id="raza" class="form-control">
+                    <option value="" disabled selected>Seleccione una raza</option>
+                    <option value="labrador">Labrador</option>
+                    <option value="siames">Siamés</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="edad">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" id="edad" name="edad">
+            </div>
+        </form>
+    </div>
+    <div>
+        <h3>Historial</h3>
+    </div>
+    <div>
+        <h3>Pruebas y Resultados</h3>
+    </div>
+</div>

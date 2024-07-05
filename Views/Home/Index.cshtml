@@ -1,0 +1,245 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    h1 {
+        margin-bottom: -220px;
+    }
+</style>
+<div class="inicio">
+    <h1>BLABLABLA</h1>
+    <img src="~/imagenes/corgi.png" />
+</div>
+
+<!-- Modal AÑADIR PROPIETARIO-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header form-c">
+                <h5 class="modal-title w-100 text-center" id="staticBackdropLabel">CREAR NUEVO PROPIETARIO</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="direccion">Dirección</label>
+                        <input type="text" class="form-control" id="direccion" name="direccion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="provincia">Provincia</label>
+                        <input type="text" class="form-control" id="provincia" name="provincia">
+                    </div>
+                    <div class="form-group">
+                        <label for="ciudad">Ciudad</label>
+                        <input type="text" class="form-control" id="ciudad" name="ciudad">
+                    </div>
+                    <div class="form-group">
+                        <label for="telef">Telefono</label>
+                        <input type="tel" class="form-control" id="telef" name="telef" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI</label>
+                        <input type="text" class="form-control" id="dni" name="dni">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-success">Aceptar/Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal AÑADIR MASCOTA-->
+<div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header form-c">
+                <h5 class="modal-title w-100 text-center" id="staticBackdropLabel">AÑADIR NUEVA MASCOTA</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="prppietarioId" />
+                    <div class="form-group">
+                        <label for="nombre">Nombre Propietario</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apellidos">Apellidos Propietario</label>
+                        <input type="text" class="form-control" id="apellidos" name="apellidos" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefP">Telefono Propietario</label>
+                        <input type="tel" class="form-control" id="telefP" name="telefP" required>
+                    </div>
+                    <hr />
+                    <h5 class="modal-title w-100 text-center">Datos Mascota:</h5>
+                    <div class="form-group">
+                        <label for="nombreM">Nombre</label>
+                        <input type="text" class="form-control" id="nombreM" name="nombreM" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="microchip">Nº Microchip</label>
+                        <input type="text" class="form-control" id="microchip" name="microchip">
+                    </div>
+                    <div class="form-group">
+                        <label for="especie">Especie</label>
+                        <select id="especie" class="form-control">
+                            <option value="" disabled selected>Seleccione una especie</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="raza">Raza</label>
+                        <select id="raza" class="form-control">
+                            <option value="" disabled selected>Seleccione una raza</option>
+                            <option value="labrador">Labrador</option>
+                            <option value="siames">Siamés</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="edad" name="edad">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-success">Aceptar/Continuar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal ESPECIES Y RAZAS-->
+<div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header form-c">
+                <h5 class="modal-title w-100 text-center" id="staticBackdropLabel">AÑADIR ESPECIE Y RAZA</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 style="text-decoration:underline">Añadir Especie:</h5>
+                        <form id="form-especie">
+                            <div class="form-group">
+                                <label for="nombreE">Nombre Especie</label>
+                                <input type="text" class="form-control" id="nombreE" name="nombreE" required>
+                                <button type="button" class="btn btn-outline-success mt-2">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 style="text-decoration:underline">Añadir Raza:</h5>
+                        <form id="form-raza">
+                            <div class="form-group">
+                                <label for="nombreR">Nombre Raza</label>
+                                <input type="text" class="form-control" id="nombreR" name="nombreR" required>
+                                <button type="button" class="btn btn-outline-success mt-2">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                <h5 style="text-decoration:underline">Especies y Razas Existentes:</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Especie</th>
+                            <th>Raza</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Datos de ejemplo; estos serán reemplazados con datos del servidor -->
+                        <tr>
+                            <td>Perro</td>
+                            <td>Labrador</td>
+                        </tr>
+                        <tr>
+                            <td>Gato</td>
+                            <td>Siamés</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal VETERINARIOS Y ATV -->
+<div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 80%;">
+        <div class="modal-content">
+            <div class="modal-header form-c">
+                <h5 class="modal-title w-100 text-center" id="staticBackdropLabel">AÑADIR VETERINARIO / ATV</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 style="text-decoration:underline">Añadir Veterinario:</h5>
+                        <form id="form-especie">
+                            <div class="form-group">
+                                <label for="nombreV">Nombre Veterinario</label>
+                                <input type="text" class="form-control" id="nombreV" name="nombreV" required>
+                                <label for="numero">Número Colegiado</label>
+                                <input type="text" class="form-control" id="numero" name="numero" required>
+                                <button type="button" class="btn btn-outline-success mt-2">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 style="text-decoration:underline">Añadir ATV:</h5>
+                        <form id="form-raza">
+                            <div class="form-group">
+                                <label for="nombreR">Nombre ATV</label>
+                                <input type="text" class="form-control" id="nombreR" name="nombreR" required>
+                                <button type="button" class="btn btn-outline-success mt-2">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr />
+                <h5 style="text-decoration:underline">Veterinarios y ATV :</h5>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Veterinarios</th>
+                            <th>NªColegiado</th>
+                            <th>ATV</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Datos de ejemplo; estos serán reemplazados con datos del servidor -->
+                        <tr>
+                            <td>Paco</td>
+                            <td>2654</td>
+                            <td>Sofia</td>
+                        </tr>
+                        <tr>
+                            <td>Marisa</td>
+                            <td>6584</td>
+                            <td>Marcos</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-success">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
